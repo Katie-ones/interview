@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Interview with a Local - Kathryn Ovchinnikov</title>
+  <meta name="description" content="Interview with a Local - a cultural interview conducted in Russian by Kathryn Ovchinnikov for SRAS." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #faf8f5; --surface: #ffffff; --border: #e8e2d9;
+      --accent: #8b6f4e; --accent2: #c4a882;
+      --text: #2c2418; --muted: #7a6e63;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: "Inter", sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; font-size: 16px; }
+    .lang-bar {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; justify-content: flex-end; align-items: center;
+      padding: 14px 40px; background: rgba(250,248,245,.92);
+      backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); gap: 6px;
+    }
+    .lang-btn {
+      background: transparent; border: 1.5px solid var(--border); color: var(--muted);
+      font-family: "Inter", sans-serif; font-size: 11px; font-weight: 500;
+      letter-spacing: .12em; text-transform: uppercase; padding: 5px 14px;
+      border-radius: 20px; cursor: pointer; transition: all .25s;
+    }
+    .lang-btn:hover { border-color: var(--accent2); color: var(--accent); }
+    .lang-btn.active { background: var(--accent); border-color: var(--accent); color: #fff; }
+    .hero { padding: 148px 40px 80px; max-width: 860px; margin: 0 auto; text-align: center; }
+    .hero-label { display: inline-block; font-size: 11px; font-weight: 500; letter-spacing: .18em; text-transform: uppercase; color: var(--accent2); margin-bottom: 24px; }
+    .hero-title { font-family: "Cormorant Garamond", serif; font-size: clamp(2.8rem,6vw,4.2rem); font-weight: 300; line-height: 1.15; color: var(--text); margin-bottom: 16px; }
+    .hero-title em { font-style: italic; color: var(--accent); }
+    .hero-author { font-size: 13px; letter-spacing: .08em; color: var(--muted); margin-bottom: 40px; text-transform: uppercase; }
+    .divider { width: 60px; height: 1px; background: linear-gradient(90deg, transparent, var(--accent2), transparent); margin: 0 auto 40px; }
+    .hero-intro { font-size: 17px; color: var(--muted); max-width: 620px; margin: 0 auto; font-weight: 300; }
+    .section { padding: 64px 40px; max-width: 860px; margin: 0 auto; }
+    .section + .section { padding-top: 0; }
+    .section-bg { background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 52px; }
+    .section-label { font-size: 10px; font-weight: 500; letter-spacing: .2em; text-transform: uppercase; color: var(--accent2); margin-bottom: 18px; }
+    .section-title { font-family: "Cormorant Garamond", serif; font-size: clamp(1.6rem,3.5vw,2.2rem); font-weight: 400; color: var(--text); margin-bottom: 20px; line-height: 1.3; }
+    .section-body { color: var(--muted); font-size: 15.5px; font-weight: 300; max-width: 680px; }
+    .info-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; margin-top: 32px; }
+    .info-card { background: var(--surface); padding: 24px 28px; }
+    .info-card-label { font-size: 10px; letter-spacing: .18em; text-transform: uppercase; color: var(--accent2); margin-bottom: 8px; font-weight: 500; }
+    .info-card-value { font-family: "Cormorant Garamond", serif; font-size: 1.2rem; color: var(--text); }
+    .topics-list { list-style: none; display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 12px; margin-top: 28px; }
+    .topics-list li { display: flex; align-items: flex-start; gap: 10px; color: var(--muted); font-size: 15px; font-weight: 300; }
+    .topics-list li::before { content: ""; width: 5px; height: 5px; border-radius: 50%; background: var(--accent2); flex-shrink: 0; margin-top: 9px; }
+    .audio-section { padding: 32px 40px 80px; max-width: 860px; margin: 0 auto; }
+    .audio-card { background: var(--text); border-radius: 20px; padding: 44px 52px; color: #fff; position: relative; overflow: hidden; }
+    .audio-card::before { content: ""; position: absolute; top: -80px; right: -80px; width: 300px; height: 300px; border-radius: 50%; background: radial-gradient(circle, rgba(196,168,130,.15) 0%, transparent 70%); pointer-events: none; }
+    .audio-card-label { font-size: 10px; letter-spacing: .2em; text-transform: uppercase; color: var(--accent2); margin-bottom: 16px; font-weight: 500; }
+    .audio-card-title { font-family: "Cormorant Garamond", serif; font-size: clamp(1.4rem,3vw,1.9rem); font-weight: 300; margin-bottom: 8px; }
+    .audio-card-sub { font-size: 13px; color: rgba(255,255,255,.45); margin-bottom: 36px; font-weight: 300; }
+    .player-controls { display: flex; align-items: center; gap: 16px; }
+    .play-btn { width: 52px; height: 52px; border-radius: 50%; background: var(--accent2); border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: transform .2s, background .2s; }
+    .play-btn:hover { background: #d4b892; transform: scale(1.06); }
+    .play-btn svg { fill: #1a1410; }
+    .play-icon { margin-left: 3px; }
+    .pause-icon { display: none; }
+    .play-btn.playing .play-icon { display: none; }
+    .play-btn.playing .pause-icon { display: block; }
+    .prog-wrap { flex: 1; cursor: pointer; padding: 10px 0; }
+    .prog-bar { height: 3px; background: rgba(255,255,255,.15); border-radius: 3px; position: relative; }
+    .prog-fill { height: 100%; width: 0%; background: linear-gradient(90deg, var(--accent2), #e8c99a); border-radius: 3px; transition: width .1s linear; pointer-events: none; }
+    .prog-thumb { position: absolute; top: 50%; right: -6px; transform: translateY(-50%); width: 12px; height: 12px; border-radius: 50%; background: var(--accent2); opacity: 0; transition: opacity .2s; pointer-events: none; }
+    .prog-bar:hover .prog-thumb { opacity: 1; }
+    .time-lbl { font-size: 12px; color: rgba(255,255,255,.5); white-space: nowrap; min-width: 90px; text-align: right; font-variant-numeric: tabular-nums; }
+
+    footer { text-align: center; padding: 28px 40px; font-size: 12px; color: var(--muted); border-top: 1px solid var(--border); letter-spacing: .04em; }
+    @media (max-width: 600px) {
+      .lang-bar { padding: 12px 20px; }
+      .hero { padding: 120px 24px 60px; }
+      .section { padding: 40px 20px; }
+      .section-bg { padding: 28px 24px; }
+      .audio-card { padding: 32px 24px; }
+      .audio-section { padding: 20px 20px 60px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav class="lang-bar">
+  <button class="lang-btn active" id="btn-en" onclick="setLang('en')">EN</button>
+  <button class="lang-btn"        id="btn-ru" onclick="setLang('ru')">RU</button>
+</nav>
+
+<header class="hero">
+  <span class="hero-label" id="t-label">Cultural Interview - SRAS</span>
+  <h1 class="hero-title" id="t-title">Interview <em id="t-title-em">with a Local</em></h1>
+  <p class="hero-author" id="t-author">by Kathryn Ovchinnikov</p>
+  <div class="divider"></div>
+  <p class="hero-intro" id="t-intro">An audio interview conducted in Russian, exploring culture, daily life, and local perspectives through an honest conversation with a native of Kazakhstan.</p>
+</header>
+
+<section class="section">
+  <div class="section-bg">
+    <p class="section-label" id="t-about-label">About the Interview</p>
+    <h2 class="section-title" id="t-about-title">Getting to Know Kazakhstan</h2>
+    <p class="section-body" id="t-about-body">This interview was recorded as part of the SRAS language and cultural immersion programme. The goal was to hold a natural conversation of at least 10 minutes entirely in Russian, asking meaningful questions, listening carefully, and following up. The result is a window into a real person's life: their home, their culture, and their world.</p>
+    <div class="info-grid">
+      <div class="info-card">
+        <p class="info-card-label" id="t-card-int-label">Interviewer</p>
+        <p class="info-card-value">Kathryn Ovchinnikov</p>
+      </div>
+      <div class="info-card">
+        <p class="info-card-label" id="t-card-sub-label">Interviewee</p>
+        <p class="info-card-value" id="t-card-sub-val">Local from Kazakhstan</p>
+      </div>
+      <div class="info-card">
+        <p class="info-card-label" id="t-card-lang-label">Language</p>
+        <p class="info-card-value" id="t-card-lang-val">Russian</p>
+      </div>
+      <div class="info-card">
+        <p class="info-card-label" id="t-card-prog-label">Programme</p>
+        <p class="info-card-value">SRAS</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-bg">
+    <p class="section-label" id="t-topics-label">Topics Discussed</p>
+    <h2 class="section-title" id="t-topics-title">What We Talked About</h2>
+    <ul class="topics-list" id="topics-list"></ul>
+  </div>
+</section>
+
+<section class="audio-section">
+  <div class="audio-card">
+    <p class="audio-card-label" id="t-listen-label">Listen - Full Interview</p>
+    <h2 class="audio-card-title" id="t-recording-title">Interview Recording</h2>
+    <p class="audio-card-sub" id="t-recording-sub">Recorded in Russian, approx. 10 min</p>
+    <div class="player-controls">
+      <button class="play-btn" id="play-btn" onclick="togglePlay()" aria-label="Play">
+        <svg class="play-icon" width="18" height="18" viewBox="0 0 18 18"><polygon points="5,3 15,9 5,15"/></svg>
+        <svg class="pause-icon" width="18" height="18" viewBox="0 0 18 18"><rect x="4" y="3" width="3.5" height="12" rx="1"/><rect x="10.5" y="3" width="3.5" height="12" rx="1"/></svg>
+      </button>
+      <div class="prog-wrap" onclick="seekAudio(event)">
+        <div class="prog-bar" id="prog-bar">
+          <div class="prog-fill" id="prog-fill"></div>
+          <div class="prog-thumb"></div>
+        </div>
+      </div>
+      <span class="time-lbl" id="time-lbl">0:00 / 0:00</span>
+    </div>
+    <audio id="interview-audio" preload="metadata">
+      <source src="interview.mp3" type="audio/mpeg" />
+      <source src="interview.ogg" type="audio/ogg" />
+    </audio>
+  </div>
+</section>
+
+<footer>
+  <span id="t-footer">&#169; 2026 Kathryn Ovchinnikov - SRAS Cultural Interview Programme</span>
+</footer>
+
+<script>
+var T = {
+  en: {
+    label: "Cultural Interview - SRAS",
+    title: "Interview",
+    titleEm: "with a Local",
+    author: "by Kathryn Ovchinnikov",
+    intro: "An audio interview conducted in Russian, exploring culture, daily life, and local perspectives through an honest conversation with a native of Kazakhstan.",
+    aboutLabel: "About the Interview",
+    aboutTitle: "Getting to Know Kazakhstan",
+    aboutBody: "This interview was recorded as part of the SRAS language and cultural immersion programme. The goal was to hold a natural conversation of at least 10 minutes entirely in Russian, asking meaningful questions, listening carefully, and following up. The result is a window into a real person's life: their home, their culture, and their world.",
+    cardIntLabel: "Interviewer",
+    cardSubLabel: "Interviewee",
+    cardSubVal: "Local from Kazakhstan",
+    cardLangLabel: "Language",
+    cardLangVal: "Russian",
+    cardProgLabel: "Programme",
+    topicsLabel: "Topics Discussed",
+    topicsTitle: "What We Talked About",
+    listenLabel: "Listen - Full Interview",
+    recTitle: "Interview Recording",
+    recSub: "Recorded in Russian, approx. 10 min",
+    footer: "&#169; 2026 Kathryn Ovchinnikov - SRAS Cultural Interview Programme",
+    topics: [
+      "Name and city of origin",
+      "Occupation and daily life",
+      "What they love about their city and country",
+      "Languages spoken besides Russian",
+      "Favourite places to visit in Kazakhstan",
+      "Traditional foods and national cuisine",
+      "Thoughts on travelling and travel experiences",
+      "Impressions of my home country"
+    ]
+  },
+  ru: {
+    label: "Культурное интервью - SRAS",
+    title: "Разговор",
+    titleEm: "с Казахстаном",
+    author: "автор: Катрин Александра Овчинникова",
+    intro: "Живое аудиоинтервью на русском языке о культуре, повседневной жизни и взгляде изнутри - честный разговор с жителем Казахстана.",
+    aboutLabel: "Об интервью",
+    aboutTitle: "Знакомство с Казахстаном",
+    aboutBody: "Это интервью записано в рамках языковой и культурной программы SRAS. Цель - провести естественный разговор не менее 10 минут на русском языке: задавать содержательные вопросы, внимательно слушать и развивать темы. В итоге - живой рассказ о реальном человеке, его доме, культуре и мире.",
+    cardIntLabel: "Интервьюер",
+    cardSubLabel: "Собеседник",
+    cardSubVal: "Житель Казахстана",
+    cardLangLabel: "Язык",
+    cardLangVal: "Русский",
+    cardProgLabel: "Программа",
+    topicsLabel: "Темы разговора",
+    topicsTitle: "О чём мы говорили",
+    listenLabel: "Слушать - Полное интервью",
+    recTitle: "Запись интервью",
+    recSub: "Запись на русском языке, около 10 минут",
+    footer: "&#169; 2026 Катрин Александра Овчинникова - Культурная программа интервью SRAS",
+    topics: [
+      "Имя и родной город",
+      "Профессия и повседневная жизнь",
+      "Что нравится в своём городе и стране",
+      "Языки помимо русского",
+      "Любимые места в Казахстане",
+      "Традиционная кухня и национальные блюда",
+      "Мысли о путешествиях и опыт поездок",
+      "Впечатления о моей родной стране"
+    ]
+  }
+};
+
+var lang = "en";
+
+function g(id) { return document.getElementById(id); }
+
+function setLang(l) {
+  lang = l;
+  document.documentElement.lang = l;
+  g("btn-en").classList.toggle("active", l === "en");
+  g("btn-ru").classList.toggle("active", l === "ru");
+  var d = T[l];
+  g("t-label").textContent        = d.label;
+  g("t-title").firstChild.textContent = d.title + " ";
+  g("t-title-em").textContent     = d.titleEm;
+  g("t-author").textContent       = d.author;
+  g("t-intro").textContent        = d.intro;
+  g("t-about-label").textContent  = d.aboutLabel;
+  g("t-about-title").textContent  = d.aboutTitle;
+  g("t-about-body").textContent   = d.aboutBody;
+  g("t-card-int-label").textContent  = d.cardIntLabel;
+  g("t-card-sub-label").textContent  = d.cardSubLabel;
+  g("t-card-sub-val").textContent    = d.cardSubVal;
+  g("t-card-lang-label").textContent = d.cardLangLabel;
+  g("t-card-lang-val").textContent   = d.cardLangVal;
+  g("t-card-prog-label").textContent = d.cardProgLabel;
+  g("t-topics-label").textContent = d.topicsLabel;
+  g("t-topics-title").textContent = d.topicsTitle;
+  g("t-listen-label").textContent = d.listenLabel;
+  g("t-recording-title").textContent = d.recTitle;
+  g("t-recording-sub").textContent   = d.recSub;
+  g("t-footer").innerHTML         = d.footer;
+  buildTopics(d.topics);
+}
+
+function buildTopics(list) {
+  var ul = g("topics-list");
+  ul.innerHTML = "";
+  list.forEach(function(t) {
+    var li = document.createElement("li");
+    li.textContent = t;
+    ul.appendChild(li);
+  });
+}
+
+buildTopics(T.en.topics);
+
+var audio   = g("interview-audio");
+var playBtn = g("play-btn");
+var fill    = g("prog-fill");
+var timeLbl = g("time-lbl");
+
+function fmt(s) {
+  if (!isFinite(s) || s === 0) return "0:00";
+  return Math.floor(s / 60) + ":" + String(Math.floor(s % 60)).padStart(2, "0");
+}
+
+audio.addEventListener("loadedmetadata", function() {
+  timeLbl.textContent = "0:00 / " + fmt(audio.duration);
+});
+
+audio.addEventListener("timeupdate", function() {
+  if (!audio.duration) return;
+  fill.style.width = (audio.currentTime / audio.duration * 100) + "%";
+  timeLbl.textContent = fmt(audio.currentTime) + " / " + fmt(audio.duration);
+});
+
+audio.addEventListener("ended", function() {
+  playBtn.classList.remove("playing");
+  fill.style.width = "0%";
+});
+
+function togglePlay() {
+  if (audio.paused) {
+    audio.play().then(function() { playBtn.classList.add("playing"); }).catch(function() {});
+  } else {
+    audio.pause();
+    playBtn.classList.remove("playing");
+  }
+}
+
+function seekAudio(e) {
+  var bar  = g("prog-bar");
+  var rect = bar.getBoundingClientRect();
+  var p    = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width));
+  if (audio.duration) audio.currentTime = p * audio.duration;
+}
+</script>
+</body>
+</html>
